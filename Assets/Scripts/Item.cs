@@ -11,8 +11,8 @@ public class Item : BaseObject {
 	public ItemState state = ItemState.Idle;
 	public System.Action OnStateChange;
 	public System.Action OnAsk;
-	public float[] minActionPerState = new float[]{ 2f, 2f, 2f };
-	public float[] maxActionPerState = new float[]{ 3f, 3f, 3f };
+	public float[] minAsksPerState = new float[]{ 2f, 2f, 2f };
+	public float[] maxAsksPerState = new float[]{ 3f, 3f, 3f };
 
 	void Awake(){
 		spriteRenderer = GetComponent<SpriteRenderer> ();
@@ -24,7 +24,7 @@ public class Item : BaseObject {
 	protected new void Start () {		
 		base.Start ();
 
-		Invoke ("askAction", Random.Range( minActionPerState[(int)state], maxActionPerState[(int)state]));
+		Invoke ("askAction", Random.Range( minAsksPerState[(int)state], maxAsksPerState[(int)state]));
 	}
 	
 	// Update is called once per frame
@@ -45,7 +45,7 @@ public class Item : BaseObject {
 		}
 
 		if (state != ItemState.Broken)
-			Invoke ("askAction", Random.Range (minActionPerState [(int)state], maxActionPerState [(int)state]));
+			Invoke ("askAction", Random.Range( minAsksPerState[(int)state], maxAsksPerState[(int)state]));
 	}
 
 	void reset(){
