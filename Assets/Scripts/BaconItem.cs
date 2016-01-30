@@ -8,16 +8,16 @@ public class BaconItem : Item {
 		base.Start();
 
 		OnAsk += () => {
-			l("bacon ask! " +  state);
+			//l("bacon ask! " +  state);
 		};
 
 		OnStateChange += () => {
-			l("now i'm "+ state);
+			//l("now i'm "+ state);
 		};
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	protected new void Update () {
+		base.Update ();
 	}
 }

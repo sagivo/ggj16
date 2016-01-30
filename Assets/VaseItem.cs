@@ -9,16 +9,16 @@ public class VaseItem : Item {
 		base.Start();
 
 		OnAsk += () => {
-			l("vate ask! " +  state);
+			//l("vate ask! " +  state);
 		};
 
 		OnStateChange += () => {
-			l("vase is "+ state);
+			//l("vase is "+ state);
 		};
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	protected new void Update () {
+		base.Update ();
 	}
 }

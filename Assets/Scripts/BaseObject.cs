@@ -8,11 +8,11 @@ public class BaseObject : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected void Update () {
 	
 	}
 
-	public void l(object o){
+	protected void l(object o){
 		Debug.Log (o);
 	}
 }
