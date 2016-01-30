@@ -1,18 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BaconItem : Item {
+public class VaseItem : Item {
+
 
 	// Use this for initialization
 	protected new void Start () {
 		base.Start();
 
 		OnAsk += () => {
-			l("bacon ask! " +  state);
+			l("vate ask! " +  state);
 		};
 
 		OnStateChange += () => {
-			l("now i'm "+ state);
+			l("vase is "+ state);
 		};
 	}
 	
