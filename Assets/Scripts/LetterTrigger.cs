@@ -84,7 +84,7 @@ public class LetterTrigger : MonoBehaviour {
 		letterStuff.SetActive (true);
 		isLetterActive = true;
 		if (ObjectID == 0 && pageTwo == false) {
-			letterText.text = "\nSo sorry I had to take off like that -- the call came in the middle of the night, and we both know it’s not a good idea to let an exorcism wait. Much easier to get a good, clean soul when the possession is still fresh.\nMy agent’s blowing up my phone, so I may be away for a little while. Be a dear while I’m away and look after my trophies, would you? <3 You know how to take care of.\nHere’s the first, fresh from last night. Some Upper-East-Sider was throwing a fit; they thought it was just nerves at first, but when her tongue got four feet long they started to wonder. She took a bit of wrangling, but after four hours upside-down she finally coughed the spirit out into this vase. It’s a bit unsteady — be a dear and keep it upright if it starts to totter?\nThanks~\nxoxo,\nEliza";
+			letterText.text = "We don’t want a repeat of last Christmas, so please keep an eye on them, for your sake if no one else’s :S\nAnd now they’ve got a new friend! Who would have thought such a kind-looking old granny had a demon inside her? I guess compulsively knitting pentagrams is a bit of a tell ;P One more for the collection! Just tug it down if it starts knitting itself, or you’ll be tying yourself in knots untangling it ;)\nxoxo,\nEliza\";";
 		}
 		pageTwo = true;
 	}
@@ -96,7 +96,7 @@ public class LetterTrigger : MonoBehaviour {
 		isLetterActive = true;
 
 		if (ObjectID == 0 && pageTwo == false) {
-			letterText.text = "Clive, darling,\n So sorry for dashing off like that — I was so looking forward to a quiet morning of cuddles before heading off for the book tour. But the call came in the middle of the night, and we both know it’s not a good idea to let an exorcism wait. Much easier to get a good, clean soul when the possession is still fresh.\nYou know the drill whle I’m away — nudge Mom’s vase back up if she starts to droop, and wipe Dad’s glasses clean if he gets grumpy. We don’t want a repeat of last Christmas, so please keep an eye on them, for your sake if no one else’s :S\nAnd now they’ve got a new friend! Who would have thought such a kind-looking old granny had a demon inside her? I guess compulsively knitting pentagrams is a bit of a tell ;P One more for the collection! Just tug it down if it starts knitting itself, or you’ll be tying yourself in knots untangling it ;)\nxoxo,\nEliza";
+			letterText.text = "Clive, darling,\n So sorry for dashing off like that — I was so looking forward to a quiet morning of cuddles before heading off for the book tour. But the call came in the middle of the night, and we both know it’s not a good idea to let an exorcism wait. Much easier to get a good, clean soul when the possession is still fresh.\nYou know the drill whle I’m away — nudge Mom’s vase back up if she starts to droop, and wipe Dad’s glasses clean if he gets grumpy. ";
 		} else if (ObjectID == 1) {
 			letterText.text = "Dearest Clive,,\nAlways sad to see kids getting possessed. You wanna believe that sort of thing won’t happen till you’re older, right? Once you hit 50, you’re really just waiting for it. But at four? sigh. Had to SIT on the poor girl until the spirit came out. Not sure if she cried more from that or from losing her teddy :( but trapped souls in toys don’t make for great playmates. Teddy misses her too, I think — just stroke his little head to keep him calm.\nThanks as always, dear,\nEliza";
 		} else if (ObjectID == 2) {
