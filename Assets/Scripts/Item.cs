@@ -67,6 +67,8 @@ public class Item : BaseObject {
 			audioSource.clip= sounds [(int)state - 1];
 			audioSource.Play ();
 		}
+		if (state == ItemState.Broken)
+			GameController.game.dec ();
 		if (OnStateChange != null)
 			OnStateChange ();
 	}

@@ -10,11 +10,14 @@ public class GameController : BaseObject {
 	public Image[] lifeImages;
 	public int life = 3;
 	public Sprite decImage;
+	public static GameController game;
 
 	// Use this for initialization
 	new void Start () {
 		base.Start ();
-		InvokeRepeating ("dec", 2, 2);
+
+		if (!game)
+			game = this;
 	}
 	
 	// Update is called once per frame
@@ -45,11 +48,14 @@ public class GameController : BaseObject {
 	}
 
 	public void dec(){
-		Debug.Log ("asdasdsad");
-		if (life-- > 0)
+		life--;
+		if (life >= 0) {
 			lifeImages [life].sprite = decImage;
+		} else
+			die ();
 	}
 
 	public void die(){
+		l ("i'm dead!");
 	}
 }
