@@ -40,6 +40,9 @@ public class Item : BaseObject {
 	}
 
 	void askAction(){
+		l (swipeDirection);
+		if (state == ItemState.Broken)
+			return;
 		if (retries++ >= maxRetriesPerState [(int)state]) {
 			state++; 
 			setItemPerNewState ();
