@@ -33,6 +33,7 @@ public class Item : BaseObject {
 		base.Start ();
 		originalColor = spriteRenderer.color;
 		Invoke ("askAction", Random.Range( minAsksPerState[(int)state], maxAsksPerState[(int)state]));
+
 	}
 	
 	// Update is called once per frame
@@ -59,6 +60,8 @@ public class Item : BaseObject {
 		if (state > 0) {
 			state--;
 			setItemPerNewState ();
+			if (audioSource.isPlaying)
+				audioSource.Stop ();
 		}
 	}
 
