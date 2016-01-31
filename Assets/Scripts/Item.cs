@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Item : BaseObject {
 
+	public MiniGestureRecognizer.SwipeDirection swipeDirection = MiniGestureRecognizer.SwipeDirection.NONE;
 	public enum ItemState {Idle = 0, Angry = 1, SuperAngry = 2, Broken = 3};
 	public Sprite[] stateSprites;
 	public SpriteRenderer spriteRenderer;
