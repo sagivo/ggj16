@@ -63,8 +63,8 @@ public class Item : BaseObject {
 		retries = 0;
 		if (audioSource.isPlaying)
 			audioSource.Stop ();
-		if (sounds.Length > (int)state - 1) {
-			audioSource.clip= sounds [(int)state - 1];
+		if (sounds.Length > (int)state - 1 && state != ItemState.Idle) {
+			audioSource.clip = sounds [(int)state - 1];
 			audioSource.Play ();
 		}
 		if (state == ItemState.Broken)
@@ -90,9 +90,10 @@ public class Item : BaseObject {
 	}
 
 	public void release(){
-		Invoke ("askAction", Random.Range( minAsksPerState[(int)state], maxAsksPerState[(int)state]));
-		l("released");
-		spriteRenderer.color = originalColor;
+		if (state != ItemState.Broken) {
+			Invoke ("askAction", Random.Range (minAsksPerState [(int)state], maxAsksPerState [(int)state]));
+			spriteRenderer.color = originalColor;
+		}
 	}
 
 

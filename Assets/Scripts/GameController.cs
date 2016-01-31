@@ -29,22 +29,22 @@ public class GameController : BaseObject {
 			RaycastHit hit;
 			if (Physics.Raycast (ray, out hit, 100) && hit.collider.GetComponent<Item> ()) {
 				pressedItem = hit.collider.GetComponent<Item> ();
-				pressedItem.press ();
-				//originalColor = pressedItem.spriteRenderer.color;
-				//pressedItem.spriteRenderer.color = Color.red;
-				Debug.Log ("Hit object: " + hit.collider.gameObject.name);
-				Invoke ("reset", pressedItem.holdToResetPerState [(int)pressedItem.state]);
+				if (pressedItem && pressedItem.state != Item.ItemState.Broken) {
+					pressedItem.press ();
+					Invoke ("reset", pressedItem.holdToResetPerState [(int)pressedItem.state]);
+				}
 			}
 		} else if (Input.GetMouseButtonUp (0) && pressedItem) {
 			CancelInvoke ("reset");
 			pressedItem.release ();
-			//pressedItem.spriteRenderer.color = originalColor;
 			pressedItem = null;
 		}
 	}
 
 	void reset(){
 		pressedItem.reset ();
+		if (pressedItem)
+			Invoke ("reset", pressedItem.holdToResetPerState [(int)pressedItem.state]);
 	}
 
 	public void dec(){
