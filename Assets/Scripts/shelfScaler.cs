@@ -38,8 +38,8 @@ public class shelfScaler : MonoBehaviour {
 			Vector2 sizeY = new Vector2 (theSprite.transform.localScale.x, worldScreenHeight / height / fitToScreenHeight);
 			theSprite.transform.localScale = sizeY;
 		} else {
-			Vector2 retain = new Vector2 (theSprite.transform.localScale.x, theSprite.transform.localScale.x);
-			theSprite.transform.localScale = retain;
+			//Vector2 retain = new Vector2 (theSprite.transform.localScale.x, theSprite.transform.localScale.x);
+			//theSprite.transform.localScale = retain;
 		}
 	}
 }
