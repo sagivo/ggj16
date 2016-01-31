@@ -22,7 +22,7 @@ public class GameController : BaseObject {
 
 		MiniGestureRecognizer.Swipe += (MiniGestureRecognizer.SwipeDirection dir) => {
 			//t.text = dir.ToString();	
-			if (pressedItem && pressedItem.swipeDirection == dir) reset();
+			if (pressedItem && pressedItem.swipeDirection == dir && pressedItem.state != Item.ItemState.Broken) reset();
 		};
 	}
 	
