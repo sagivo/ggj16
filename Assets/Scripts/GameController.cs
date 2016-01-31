@@ -11,6 +11,7 @@ public class GameController : BaseObject {
 	public int life = 3;
 	public Sprite decImage;
 	public static GameController game;
+	public Text t;
 
 	// Use this for initialization
 	new void Start () {
@@ -18,6 +19,11 @@ public class GameController : BaseObject {
 
 		if (!game)
 			game = this;
+
+		MiniGestureRecognizer.Swipe += (MiniGestureRecognizer.SwipeDirection dir) => {
+			t.text = dir.ToString();	
+			if (pressedItem && pressedItem.swipeDirection == dir) reset();
+		};
 	}
 	
 	// Update is called once per frame
@@ -30,8 +36,10 @@ public class GameController : BaseObject {
 			if (Physics.Raycast (ray, out hit, 100) && hit.collider.GetComponent<Item> ()) {
 				pressedItem = hit.collider.GetComponent<Item> ();
 				if (pressedItem && pressedItem.state != Item.ItemState.Broken) {
-					pressedItem.press ();
-					Invoke ("reset", pressedItem.holdToResetPerState [(int)pressedItem.state]);
+					if (pressedItem.swipeDirection == MiniGestureRecognizer.SwipeDirection.NONE) {
+						pressedItem.press ();
+						Invoke ("reset", pressedItem.holdToResetPerState [(int)pressedItem.state]);
+					}
 				}
 			}
 		} else if (Input.GetMouseButtonUp (0) && pressedItem) {
@@ -60,4 +68,6 @@ public class GameController : BaseObject {
 		ApplicationModel.ObjectID = 11;
 		Application.LoadLevel ("letter");
 	}
+
+
 }
