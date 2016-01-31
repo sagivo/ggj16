@@ -3,7 +3,7 @@ using System.Collections;
 
 public class GameController : BaseObject {
 
-	Color originalColor;
+	//Color originalColor;
 	Item pressedItem;
 
 	// Use this for initialization
@@ -21,15 +21,15 @@ public class GameController : BaseObject {
 			if (Physics.Raycast (ray, out hit, 100) && hit.collider.GetComponent<Item> ()) {
 				pressedItem = hit.collider.GetComponent<Item> ();
 				pressedItem.press ();
-				originalColor = pressedItem.spriteRenderer.color;
-				pressedItem.spriteRenderer.color = Color.red;
+				//originalColor = pressedItem.spriteRenderer.color;
+				//pressedItem.spriteRenderer.color = Color.red;
 				Debug.Log ("Hit object: " + hit.collider.gameObject.name);
 				Invoke ("reset", pressedItem.holdToResetPerState [(int)pressedItem.state]);
 			}
 		} else if (Input.GetMouseButtonUp (0) && pressedItem) {
 			CancelInvoke ("reset");
 			pressedItem.release ();
-			pressedItem.spriteRenderer.color = originalColor;
+			//pressedItem.spriteRenderer.color = originalColor;
 			pressedItem = null;
 		}
 	}

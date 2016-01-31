@@ -15,7 +15,7 @@ public class Item : BaseObject {
 	public float[] minAsksPerState = new float[]{ 2f, 2f, 2f };
 	public float[] maxAsksPerState = new float[]{ 3f, 3f, 3f };
 	public float[] holdToResetPerState = new float[]{ 2f, 2f, 2f };
-
+	private Color originalColor;
 	void Awake(){
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		state = ItemState.Idle;
@@ -25,7 +25,7 @@ public class Item : BaseObject {
 	// Use this for initialization
 	protected new void Start () {		
 		base.Start ();
-
+		originalColor = spriteRenderer.color;
 		Invoke ("askAction", Random.Range( minAsksPerState[(int)state], maxAsksPerState[(int)state]));
 	}
 	
@@ -61,13 +61,25 @@ public class Item : BaseObject {
 	}
 
 	public void press(){
-		CancelInvoke ("askAction");
-		l ("pressed" );
+		if (state == ItemState.Idle || state == ItemState.Broken){
+			//don't do anything
+			l("pressed, but shouldn't be");
+		}
+		else{
+			//do things
+			l("pressed");
+			spriteRenderer.color = Color.blue;
+
+			CancelInvoke ("askAction");
+		}
+
+
 	}
 
 	public void release(){
 		Invoke ("askAction", Random.Range( minAsksPerState[(int)state], maxAsksPerState[(int)state]));
-		l ("released" );
+		l("released");
+		spriteRenderer.color = originalColor;
 	}
 
 
