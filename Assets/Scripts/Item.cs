@@ -63,7 +63,7 @@ public class Item : BaseObject {
 		retries = 0;
 		if (audioSource.isPlaying)
 			audioSource.Stop ();
-		if (sounds.Length >= (int)state - 1) {
+		if (sounds.Length > (int)state - 1) {
 			audioSource.clip= sounds [(int)state - 1];
 			audioSource.Play ();
 		}

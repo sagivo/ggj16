@@ -12,7 +12,7 @@ public class BaconItem : Item {
 		};
 
 		OnStateChange += () => {
-			if (state == ItemState.Broken) GameController.game.decLife();
+			l("now i'm "+ state);
 		};
 	}
 	

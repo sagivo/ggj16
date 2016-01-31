@@ -1,20 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.UI;
 
 public class GameController : BaseObject {
 
-	public static GameController game;
-	public Image[] lifeImages;
-	public int life = 3;
-	public Sprite decImage;
+	//Color originalColor;
 	Item pressedItem;
 
 	// Use this for initialization
-	new void Start () {		
+	new void Start () {
 		base.Start ();
-		if (!game)
-			game = this;
 	}
 	
 	// Update is called once per frame
@@ -27,28 +21,20 @@ public class GameController : BaseObject {
 			if (Physics.Raycast (ray, out hit, 100) && hit.collider.GetComponent<Item> ()) {
 				pressedItem = hit.collider.GetComponent<Item> ();
 				pressedItem.press ();
+				//originalColor = pressedItem.spriteRenderer.color;
+				//pressedItem.spriteRenderer.color = Color.red;
 				Debug.Log ("Hit object: " + hit.collider.gameObject.name);
 				Invoke ("reset", pressedItem.holdToResetPerState [(int)pressedItem.state]);
 			}
 		} else if (Input.GetMouseButtonUp (0) && pressedItem) {
 			CancelInvoke ("reset");
 			pressedItem.release ();
+			//pressedItem.spriteRenderer.color = originalColor;
 			pressedItem = null;
 		}
 	}
 
 	void reset(){
 		pressedItem.reset ();
-	}
-
-	public void decLife(){
-		if (life-- <= 0)
-			die ();
-		else
-			lifeImages [life].sprite = decImage;
-	}
-
-	public void die(){
-		l ("i'm dead");
 	}
 }
