@@ -1,14 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+
 
 public class GameController : BaseObject {
 
 	//Color originalColor;
 	Item pressedItem;
+	public Image[] lifeImages;
+	public int life = 3;
+	public Sprite decImage;
 
 	// Use this for initialization
 	new void Start () {
 		base.Start ();
+		InvokeRepeating ("dec", 2, 2);
 	}
 	
 	// Update is called once per frame
@@ -36,5 +42,14 @@ public class GameController : BaseObject {
 
 	void reset(){
 		pressedItem.reset ();
+	}
+
+	public void dec(){
+		Debug.Log ("asdasdsad");
+		if (life-- > 0)
+			lifeImages [life].sprite = decImage;
+	}
+
+	public void die(){
 	}
 }
