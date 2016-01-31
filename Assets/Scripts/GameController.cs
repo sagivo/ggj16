@@ -21,7 +21,7 @@ public class GameController : BaseObject {
 			game = this;
 
 		MiniGestureRecognizer.Swipe += (MiniGestureRecognizer.SwipeDirection dir) => {
-			t.text = dir.ToString();	
+			//t.text = dir.ToString();	
 			if (pressedItem && pressedItem.swipeDirection == dir) reset();
 		};
 	}
