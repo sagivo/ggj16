@@ -57,5 +57,7 @@ public class GameController : BaseObject {
 
 	public void die(){
 		l ("i'm dead!");
+		ApplicationModel.ObjectID = 11;
+		Application.LoadLevel ("letter");
 	}
 }
