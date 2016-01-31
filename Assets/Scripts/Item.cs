@@ -12,10 +12,14 @@ public class Item : BaseObject {
 	public System.Action OnStateChange;
 	public System.Action OnAsk;
 	public System.Action OnReset;
+	public AudioSource[] sounds;
 	public float[] minAsksPerState = new float[]{ 2f, 2f, 2f };
 	public float[] maxAsksPerState = new float[]{ 3f, 3f, 3f };
 	public float[] holdToResetPerState = new float[]{ 2f, 2f, 2f };
+
 	private Color originalColor;
+	AudioSource activeSound;
+
 	void Awake(){
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		state = ItemState.Idle;
@@ -56,6 +60,12 @@ public class Item : BaseObject {
 	void setItemPerNewState(){
 		spriteRenderer.sprite = stateSprites [(int)state];
 		retries = 0;
+		if (activeSound.isPlaying)
+			activeSound.Stop ();
+		if (sounds.Length >= (int)state + 1) {
+			activeSound = sounds [(int)state];
+			activeSound.Play ();
+		}
 		if (OnStateChange != null)
 			OnStateChange ();
 	}
